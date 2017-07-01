@@ -13,7 +13,7 @@
     </head>
     <body>
         <h3>Adicionar Comentario no topico - ${topico.id}</h3>
-        <form action="adicionaComentario?id_topico=${topico.id}" method="post">
+        <form action="adicionaComentario?id_topico=${topico.id}&id_usuario=${usuario.id}" method="post">
             Descrição: <br />
             <textarea name="comentario" rows="5" cols="100"></textarea><br />
 

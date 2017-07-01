@@ -27,12 +27,14 @@ public class JdbcComentariosDao {
     }
     
     //metodo que adiciona no banco de dados
-    public void adiciona(Comentarios comentario, int id_topico) {
-        String sql = "insert into comentarios " + "(comentario, id_topico) " + "values (?,?)";
+    public void adiciona(Comentarios comentario, int id_topico, int id_usuario) {
+        String sql = "insert into comentarios " + "(comentario, id_usuario, id_topico) " + "values (?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, comentario.getComentario()); 
-            stmt.setInt(2, comentario.getId_topico());
+            stmt.setInt(2, id_usuario);
+            stmt.setInt(3, comentario.getId_topico());
+            
            
 //            stmt.setDate(3, new Date(tarefa.getDataFinalizacao().getTimeInMillis()));
             // executa

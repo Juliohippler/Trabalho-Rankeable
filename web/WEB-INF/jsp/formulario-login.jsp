@@ -16,5 +16,6 @@
       
       <input type="submit" value="Efetuar Login" /> 
     </form>
+    <a href="cadastrarForm"> Clique aqui para cadastrar um novo usuario</a>
   </body>
 </html>

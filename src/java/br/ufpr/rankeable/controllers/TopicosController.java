@@ -15,22 +15,27 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 //import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  *
  * @author julio
  */
 @Controller
+ @SessionAttributes("usuario")
 public class TopicosController {
+  //  @ModelAttribute("usuario")
+    
     @RequestMapping("/novoTopico")
-    public String form(Usuario usuario, HttpSession session){   
-      
-       session.getAttribute("usuario");    
+    public String form(Usuario usuario, Model model){
+        model.addAttribute("usuario", usuario);
        return "topicos/formulario";
     }
     
@@ -41,9 +46,9 @@ public class TopicosController {
         }        
         JdbcTopicosDao dao = new JdbcTopicosDao();
        // session.setAttribute("usuario", usuario);
-        session.getAttribute("usuario");
+       // session.getAttribute("usuario");
         dao.adiciona(topico, usuario.getId());
-        return "redirect:listaTopicos?="+topico.getId_Usuario();
+        return "redirect:listaTopicos?="+usuario.getId();
     }
 
     

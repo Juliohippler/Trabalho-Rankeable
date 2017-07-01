@@ -36,7 +36,7 @@
       <br>
    </table>
 
-        <td><a href="novoComentario?id=${topico.id}">Comentar</a></td>
+        <td><a href="novoComentario?id_topico=${topico.id}&id_usuario=${usuario.id}">Comentar</a></td>
         <td><a href="listaTopicos"> Ir para lista de Topicos </a></td>
         
        

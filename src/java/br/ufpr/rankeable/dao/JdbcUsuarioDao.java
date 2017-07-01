@@ -31,6 +31,24 @@ public class JdbcUsuarioDao {
         connection = (new MysqlConnectionFactory()).getConnection();
     }
     
+     public void adicionaUsuario(Usuario usuario) {
+        String sql = "insert into usuarios " + "(nome,senha) " + "values (?,?)";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, usuario.getNome());    
+            stmt.setString(2, usuario.getSenha());
+      
+            stmt.execute();
+            stmt.close();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+    
+    
     public Usuario buscaUsuario(String nome) {
         String sql = "select * from usuarios where nome = ?";
         try {

@@ -29,15 +29,13 @@ public class JdbcTopicosDao {
     }
     
     //metodo que adiciona no banco de dados
-    public void adiciona(Topico topicos, int id_usuario) {
-        String sql = "insert into topicos " + "(descricao,id_usuario) " + "values (?,?)";
+    public void adiciona(Topico topico, int id_usuario) {
+        String sql = "insert into topicos " + "(descricao, id_usuario) " + "values (?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, topicos.getDescricao());    
-            stmt.setInt(2, topicos.getId_Usuario());
-           
-//            stmt.setDate(3, new Date(tarefa.getDataFinalizacao().getTimeInMillis()));
-            // executa
+            stmt.setString(1, topico.getDescricao());    
+            stmt.setInt(2, id_usuario);
+      
             stmt.execute();
             stmt.close();
 

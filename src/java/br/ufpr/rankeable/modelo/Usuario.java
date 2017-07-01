@@ -6,11 +6,15 @@
 package br.ufpr.rankeable.modelo;
 
 import static javax.swing.text.StyleConstants.Size;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author julio
  */
+@Component
+@Scope("session")
     public class Usuario {
         
     private int id;  
