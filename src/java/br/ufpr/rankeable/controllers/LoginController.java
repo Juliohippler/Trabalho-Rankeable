@@ -56,7 +56,7 @@ public class LoginController {
             
             return "menu";
         } else {
-            return "/loginForm";
+            return "redirect:loginForm";
         }
         //return "redirect:listaTopicos?id="+usuario.getId();
         //return "redirect:telaVotacao";

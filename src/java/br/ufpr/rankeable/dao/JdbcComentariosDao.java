@@ -82,7 +82,7 @@ public class JdbcComentariosDao {
                 comentario.setId_topico(rs.getInt("id_topico"));
                 comentario.setId(rs.getInt("id"));
                 comentario.setComentario(rs.getString("comentario"));                         
-               
+                comentario.setId_Usuario(rs.getInt("id_usuario"));
                 comentarios.add(comentario);
             }
             stmt.close();;

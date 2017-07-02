@@ -36,7 +36,7 @@
           <td><a href="mostraTopico?id=${topico.id}">Editar</a></td>
           <td><a href="removeTopico?id=${topico.id}">Remover</a></td>
           
-          <td><a href="listaComentarios?id_topico=${topico.id}&id_usuario=${usuario.id}">Ver comentarios</a></td>
+          <td><a href="listaComentarios?id=${topico.id}&id_usuario=${usuario.id}">Ver comentarios</a></td>
          
       </tr>
   </c:forEach>

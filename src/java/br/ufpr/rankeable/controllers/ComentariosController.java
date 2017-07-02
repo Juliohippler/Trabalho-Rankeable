@@ -27,9 +27,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class ComentariosController {
     
      @RequestMapping("/novoComentario")
-    public String form(Topico topico, Usuario usuario,  Model model){
+    public String form(Topico topico, Model model, HttpSession session){
         model.addAttribute("topico", topico); // passa o topico para frente 
-        model.addAttribute("usuario", usuario);
+        //model.addAttribute("usuario", usuario);
+        session.getAttribute("usuario");
         return "comentario/formulario";
     }
 
@@ -41,19 +42,21 @@ public class ComentariosController {
         JdbcComentariosDao dao = new JdbcComentariosDao();
       
         dao.adiciona(comentario, comentario.getId_topico(), usuario.getId() );
-        return "redirect:listaComentarios?id_topico="+comentario.getId_topico();
+        return "redirect:listaComentarios?id="+comentario.getId_topico()+"&id_usuario="+usuario.getId();
     }  
     
     /**
      *
+     * @param session
      * @param topico
      * @param model
      * @return
      */
     @RequestMapping("/listaComentarios")
-    public String listar(Topico topico, Model model) {
+    public String listar(HttpSession session, Topico topico, Model model) {
         JdbcComentariosDao dao = new JdbcComentariosDao();
-        List<Comentarios> comentarios = dao.getLista(topico);        
+        List<Comentarios> comentarios = dao.getLista(topico); 
+        session.getAttribute("usuario");
         model.addAttribute("comentarios",comentarios);
         return "comentario/lista";
     }
@@ -62,7 +65,7 @@ public class ComentariosController {
     public String remover(Comentarios comentario) {
         JdbcComentariosDao dao = new JdbcComentariosDao();
         dao.remove(comentario);       
-        return "redirect:listaComentarios?id_topico="+comentario.getId_topico();
+        return "redirect:listaComentarios?id="+comentario.getId_topico();
     }
     
        @RequestMapping("mostraComentario")
@@ -73,10 +76,10 @@ public class ComentariosController {
     }
     
     @RequestMapping("/alteraComentario")
-    public String altera(Comentarios comentario) {
+    public String altera(Usuario usuario, Comentarios comentario) {
         JdbcComentariosDao dao = new JdbcComentariosDao();
         dao.altera(comentario);
-        return "redirect:listaComentarios?id_topico"+comentario.getId_topico();
+        return "redirect:listaComentarios?id="+comentario.getId_topico()+"&id_usuario="+usuario.getId();
     }
     
      

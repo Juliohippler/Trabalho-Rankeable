@@ -9,9 +9,9 @@
 <html>
 <body>
   <h3>Alterar Comentario - ${comentario.id}</h3>
-  <form action="alteraComentario?id_topico=${comentario.id_topico}" method="post">
+  <form action="alteraComentario?id_topico=${comentario.id_topico}&id_usuario=${usuario.id}" method="post">
 
-    <input type="hidden" name="id" value="${comentario.id}" />
+    <input type="hidden" name="id_comentario" value="${comentario.id}" />
   
     Descrição:<br />
     <textarea name="comentario" cols="100" rows="5"> ${comentario.comentario} </textarea>

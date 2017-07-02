@@ -15,6 +15,7 @@
 
     </head>
     <body>
+         <h3>Lista de comentarios do topico - ${comentario.id_topico}</h3>
         <table>
   <tr>
     
@@ -28,7 +29,7 @@
           <td>${comentario.comentario}</td>
  
           <td><a href="removeComentario?id=${comentario.id}&id_topico=${comentario.id_topico}">Remover</a></td>
-          <td><a href="mostraComentario?id=${comentario.id}&id_topico=${comentario.id_topico}">Editar</a></td>
+          <td><a href="mostraComentario?id=${comentario.id}&id_topico=${comentario.id_topico}&id_usuario=${usuario.id}">Editar</a></td>
         
          
       </tr>
@@ -36,7 +37,7 @@
       <br>
    </table>
 
-        <td><a href="novoComentario?id_topico=${topico.id}&id_usuario=${usuario.id}">Comentar</a></td>
+        <td><a href="novoComentario?id=${topico.id}&id_usuario=${usuario.id}">Comentar</a></td>
         <td><a href="listaTopicos"> Ir para lista de Topicos </a></td>
         
        
